@@ -1,8 +1,8 @@
-import '../components/';
+import '../src/scss/app.scss';
 
 function App() {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
     <div class="header">
       <div class="container">
         <div class="header__logo">

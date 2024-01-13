@@ -1,15 +1,16 @@
 import '../src/scss/app.scss';
 
+
 function App() {
   return (
     <div className="wrapper">
     <div class="header">
       <div class="container">
         <div class="header__logo">
-          <img width="38" src="./src/img/pizza-logo.svg" alt="Pizza logo" />
+          <img width="38" src='./img/pizza-logo.svg' alt="Pizza logo" />
           <div>
             <h1>React Pizza</h1>
-            <p>самая вкусная пицца во вселенной</p>
+            <p>самая вкусная пицца во Вселенной</p>
           </div>
         </div>
         <div class="header__cart">

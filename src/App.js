@@ -21,10 +21,7 @@ function App() {
           {
             pizzas.map(obj => 
             <PizzaBlock
-            title={obj.title}
-            price={obj.price}
-            image={obj.imageUrl}
-            size={obj.sizes} />)
+            {...obj} />)
           }
         </div>
       </div>

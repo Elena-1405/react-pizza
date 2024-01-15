@@ -1,17 +1,16 @@
 import { useState } from "react"
 
-export function PizzaBlock({ title, price }) {
+export function PizzaBlock({ title, price, image, size }) {
     const [pizzaCount, setPizzaCount] = useState(0)
-    
     const onClickAdd = () => {
         setPizzaCount(pizzaCount +1);
-    };
+    }; //move to Redux
 
     return (
         <div className="pizza-block">
   <img
     className="pizza-block__image"
-    src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+    src={image}
     alt="Pizza"
   />
   <h4 className="pizza-block__title">{title}</h4>

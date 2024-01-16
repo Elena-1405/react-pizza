@@ -19,11 +19,12 @@ export function Categories() {
   ]
 
     return (
-      <div class="categories">
+      <div className="categories">
         <ul>
           {
             categories.map((value, index) => 
               <li
+                key={index}
                 onClick={() => OnClickCategory(index)}
                 className={activeCategory === index ? 'active' : ''}>
                 {value}

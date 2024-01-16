@@ -21,6 +21,7 @@ function App() {
           {
             pizzas.map(obj => 
             <PizzaBlock
+            key={obj.title}
             {...obj} />)
           }
         </div>

@@ -5,7 +5,7 @@ export const NotFound = () => {
     return (
         <>
             <NotFoundBlock />
-            <button></button>
+            <button>На главную</button>
         </>
      )   
 };

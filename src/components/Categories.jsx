@@ -1,13 +1,13 @@
 import React from "react";
-import { useState } from "react";
+//import { useState } from "react";
 
 
-export function Categories() {
-  const [activeCategory, setActiveCategory] = useState(0);
+export function Categories({ value, onChangeCategory }) {
+  //const [activeCategory, setActiveCategory] = useState(0);
 
-  const OnClickCategory = (index) => {
-    setActiveCategory(index);
-  }
+  // const OnClickCategory = (index) => {
+  //   setActiveCategory(index);
+  // }
 
   const categories = [
     'Все',
@@ -22,12 +22,12 @@ export function Categories() {
       <div className="categories">
         <ul>
           {
-            categories.map((value, index) => 
+            categories.map((categoryName, i) => 
               <li
-                key={index}
-                onClick={() => OnClickCategory(index)}
-                className={activeCategory === index ? 'active' : ''}>
-                {value}
+                key={i}
+                onClick={() => onChangeCategory(i)}
+                className={value === i ? 'active' : ''}>
+                {categoryName}
               </li>)
           }   
         </ul>

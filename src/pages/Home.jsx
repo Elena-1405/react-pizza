@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import { Pagination } from '../components/Pagination/index';
 import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock';
@@ -10,6 +11,7 @@ export const Home = ({searchValue}) => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [categoryId, setCategoryId] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [sortType, setSortType] = useState({
       name: 'популярности',
       sort: 'rating',
@@ -18,7 +20,7 @@ export const Home = ({searchValue}) => {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://6562128cdcd355c0832487c7.mockapi.io/pizza-react?${
+      `https://6562128cdcd355c0832487c7.mockapi.io/pizza-react?page=${currentPage}&limit=4&${
         categoryId > 0 ? `category=${categoryId}` : ''
     }&sortBy={sortType.sort}&order=desc`)
       .then((res) => res.json())
@@ -27,7 +29,7 @@ export const Home = ({searchValue}) => {
         setIsLoading(false);
       });
       window.scrollTo(0,0);
-  }, [categoryId]);
+  }, [categoryId, searchValue, currentPage]);
     
 
     return (
@@ -53,6 +55,8 @@ export const Home = ({searchValue}) => {
               {...obj} />)
           }
         </div>
+        <Pagination onChangePage={number => setCurrentPage(number)} />
+          
         </>
     )
 }

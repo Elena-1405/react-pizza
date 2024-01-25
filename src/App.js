@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 import '../src/scss/app.scss';
 import {
   Routes,
@@ -9,6 +9,8 @@ import { Header } from './components/Header';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { Cart } from './pages/Cart';
+
+const SearchContext = createContext()
 
 
 function App() {

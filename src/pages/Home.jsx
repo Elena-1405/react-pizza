@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext } from "react";
+import { SearchContext } from "../App";
 import { Pagination } from '../components/Pagination/index';
 import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
@@ -7,15 +7,16 @@ import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock';
 import { Skeleton } from '../components/PizzaBlock/Skeleton'
 //import pizzas from './assets/pizza-db.json';
 
-export const Home = ({searchValue}) => {
-    const [items, setItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [categoryId, setCategoryId] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [sortType, setSortType] = useState({
-      name: 'популярности',
-      sort: 'rating',
-    });
+export const Home = () => {
+  const { searchValue } = useContext(SearchContext)
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [categoryId, setCategoryId] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortType, setSortType] = useState({
+    name: 'популярности',
+    sort: 'rating',
+  });
 
   useEffect(() => {
     setIsLoading(true);

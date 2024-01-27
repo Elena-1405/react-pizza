@@ -3,7 +3,7 @@ import { Search } from './Search/index'
 import { Link } from 'react-router-dom';
 
 
-export function Header({ searchValue, setSearchValue }) {
+export function Header() {
     return (
       <div className="header">
           <div className="container">
@@ -16,7 +16,7 @@ export function Header({ searchValue, setSearchValue }) {
                </div>
               </div>
             </Link>
-            <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+            <Search />
             <div className="header__cart"> 
               <Link to="/cart" className="button button--cart">
                 <span>520 ₽</span>

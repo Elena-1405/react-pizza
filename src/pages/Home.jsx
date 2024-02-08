@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useSelector } from '@reduxjs/toolkit';
 import { SearchContext } from "../App";
 import { Pagination } from '../components/Pagination/index';
 import { Categories } from '../components/Categories';
@@ -11,7 +12,7 @@ export const Home = () => {
   const { searchValue } = useContext(SearchContext)
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0);
+  //const [categoryId, setCategoryId] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState({
     name: 'популярности',

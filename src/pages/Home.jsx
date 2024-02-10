@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios'
+
 
 import { setCategoryId } from "../redux/slices/filterSlice";
 import { SearchContext } from "../App";
@@ -12,7 +14,7 @@ import { Skeleton } from '../components/PizzaBlock/Skeleton'
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const categoryId = useSelector(state => state.filter.categoryId);
+  const {categoryId, sort} = useSelector(state => state.filter);
   //const sortType = useSelector(state => state.filter.sort.sortProperty)
   //const {categoryId, sort } = useSelector(state => state.filter);
   //const sortType = sort.sortProperty;
@@ -30,15 +32,30 @@ export const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(
-      `https://6562128cdcd355c0832487c7.mockapi.io/pizza-react?page=${currentPage}&limit=4&${
-        categoryId > 0 ? `category=${categoryId}` : ''
-    }&sortBy={sortType.sort}&order=desc`)
-      .then((res) => res.json())
-      .then((arr) => {
-        setItems(arr);
-        setIsLoading(false);
-      });
+
+    // const sortBy = sort.sortProperty.replace('-', '');
+    // const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+    // const category = categoryId > 0 ? String(categoryId) : '';
+    // const search = searchValue;
+
+    // fetch(
+    //   `https://6562128cdcd355c0832487c7.mockapi.io/pizza-react?page=${currentPage}&limit=4&${
+    //     categoryId > 0 ? `category=${categoryId}` 
+    //     : ''}&sortBy={sortType.sort}&order=desc`)
+    //   .then((res) => res.json())
+    //   .then((arr) => {
+    //     setItems(arr);
+    //     setIsLoading(false);
+    //   });
+
+      axios.get(`https://6562128cdcd355c0832487c7.mockapi.io/pizza-react?page=${currentPage}&limit=4&${
+             categoryId > 0 ? `category=${categoryId}` 
+            : ''}&sortBy={sortType.sort}&order=desc`
+            )
+            .then((res) => {
+              setItems(res.data);
+              setIsLoading(false);
+            });
       window.scrollTo(0,0);
   }, [categoryId, searchValue, currentPage]);
     

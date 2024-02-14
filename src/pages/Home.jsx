@@ -48,13 +48,14 @@ export const Home = () => {
     //     setIsLoading(false);
     //   });
 
-      axios.get(`https://6562128cdcd355c0832487c7.mockapi.io/pizza-react?page=${currentPage}&limit=4&${
-             categoryId > 0 ? `category=${categoryId}` 
+      axios
+        .get(
+          `https://6562128cdcd355c0832487c7.mockapi.io/pizza-react?page=${currentPage}&limit=4&${categoryId > 0 ? `category=${categoryId}` 
             : ''}&sortBy={sortType.sort}&order=desc`
             )
-            .then((res) => {
-              setItems(res.data);
-              setIsLoading(false);
+          .then((res) => {
+            setItems(res.data);
+            setIsLoading(false);
             });
       window.scrollTo(0,0);
   }, [categoryId, searchValue, currentPage]);
